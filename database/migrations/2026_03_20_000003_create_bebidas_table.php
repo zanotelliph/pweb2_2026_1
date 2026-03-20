@@ -11,10 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('categoria_alunos', function (Blueprint $table) {
+        Schema::create('bebidas', function (Blueprint $table) {
             $table->id();
-            $table->string('nome', 80);
-            $table->string('nivel', 40)->nullable();
+            $table->string('nome');
+            $table->text('descricao')->nullable();
+            $table->decimal('preco', 10, 2);
+            $table->string('tipo'); // Refrigerante, Suco, Vinho, Cerveja, etc
+            $table->boolean('disponivel')->default(true);
             $table->timestamps();
         });
     }
@@ -24,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('categoria_alunos');
+        Schema::dropIfExists('bebidas');
     }
 };

@@ -11,11 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('alunos', function (Blueprint $table) {
+        Schema::create('categorias_pratos', function (Blueprint $table) {
             $table->id();
-            $table->string('nome',100);
-            $table->string('cpf',16);
-            $table->string('telefone',20)->nullable();
+            $table->string('nome');
+            $table->text('descricao')->nullable();
+            $table->boolean('ativo')->default(true);
             $table->timestamps();
         });
     }
@@ -25,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('alunos');
+        Schema::dropIfExists('categorias_pratos');
     }
 };
